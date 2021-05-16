@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Arbeitszeiterfassung</string>
+    <string name="beginnArbeitszeit">Beginn:\u0020</string>
+    <string name="pause1Beginn">1. Pause Beginn:\u0020</string>
+    <string name="pause1Ende">1. Pause Ende:\u0020</string>
+    <string name="pause2Beginn">2. Pause Beginn:\u0020</string>
+    <string name="pause2Ende">2. Pause Ende:\u0020</string>
+    <string name="endeArbeitszeit">Ende:\u0020</string>
+    <string name="arbeitszeitBrutto">Arbeitszeit (brutto):\u0020</string>
+    <string name="pausenzeit">Pausenzeit:\u0020</string>
+    <string name="arbeitszeitNetto">Arbeitszeit (netto):\u0020</string>
+    <string name="weiter">WEITER</string>
+    <string name="pause">PAUSE</string>
+    <string name="datum">Datum:\u0020</string>
 </resources>
