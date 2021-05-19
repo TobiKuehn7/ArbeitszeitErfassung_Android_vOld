@@ -20,7 +20,7 @@ jobs:
         distribution: 'adopt'
     
     - name: Run Tests
-      run: ./gradlew test
+      run: Arbeitszeiterfassung/gradlew test
     - name: Build with Gradle
-      run: ./gradlew build
+      run: Arbeitszeiterfassung/gradlew build
     
