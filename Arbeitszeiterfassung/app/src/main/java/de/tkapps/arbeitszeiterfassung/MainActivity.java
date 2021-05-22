@@ -15,7 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import de.tkapps.arbeitszeiterfassung.helpers.entryHelpers;
 import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
+import de.tkapps.arbeitszeiterfassung.models.Entry;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,20 +26,40 @@ public class MainActivity extends AppCompatActivity {
     TextView txt_datum_arbeitszeit, txt_beginn_arbeitszeit, txt_beginn_pause_1, txt_ende_pause_1, txt_beginn_pause_2, txt_ende_pause_2, txt_ende_arbeitszeit, txt_arbeitszeit_brutto, txt_pausenzeit, txt_arbeitszeit_netto;
     LinearLayout pauseEndBtnView;
 
+    // prepare model
+    Entry entry = new Entry();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // initialize UI
         initUIElements();
+
+        // TODO: chek if there is a not finished entry for today
+        if (entryHelpers.startedEntryOfTodayExists()) {
+            entry = entryHelpers.loadStartedEntry();
+        }
+
 
         // change start/end button
         btn_start.setVisibility(View.VISIBLE);
         pauseEndBtnView.setVisibility(View.GONE);
 
-        // get date of work day
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // set date of work day on top of info field
         String date = timeHelpers.getDate();
         txt_datum_arbeitszeit.setText(getText(R.string.datum) + date);
+
+        // TODO: extract entry data and show it to user
 
     }
 
