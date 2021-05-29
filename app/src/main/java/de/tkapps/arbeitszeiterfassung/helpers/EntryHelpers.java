@@ -105,8 +105,8 @@ public class EntryHelpers {
             String dateLastEntry = lastEntry.getDateBegin();
             String timeLastEntry = lastEntry.getTimeBegin();
             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-            TimeZone timeZone = new TimeZone()  ;
-            formatter.setTimeZone(new TimeZone.getTimeZone("MESZ"));
+            //TimeZone timeZone = new TimeZone()  ;
+            //formatter.setTimeZone(new TimeZone.getTimeZone("MESZ"));
             try {
                 date = formatter.parse(dateLastEntry + " " + timeLastEntry);
             } catch (ParseException e) {
