@@ -36,7 +36,7 @@ public class EntryHelpers {
             fileContent = loadAllData(filepath, filename, context);
             
             // put data into an entries list
-            if (fileContent != null) {
+            if (! fileContent.equals("")) {
                 entries = dataToList();
             }
 
@@ -101,18 +101,9 @@ public class EntryHelpers {
             Entry lastEntry = entries.get(entries.size() - 1);
 
             // get date of last entry (and format it)
-            Date date;
             String dateLastEntry = lastEntry.getDateBegin();
             String timeLastEntry = lastEntry.getTimeBegin();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-            //TimeZone timeZone = new TimeZone()  ;
-            //formatter.setTimeZone(new TimeZone.getTimeZone("MESZ"));
-            try {
-                date = formatter.parse(dateLastEntry + " " + timeLastEntry);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                date = null;
-            }
+            Date date = timeHelpers.makeDateTime(dateLastEntry, timeLastEntry);
 
             // get actual date
             Date now = new Date(System.currentTimeMillis());

@@ -3,6 +3,9 @@ package de.tkapps.arbeitszeiterfassung.helpers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -30,9 +33,8 @@ public class timeHelpers {
 
         try {
 
-            dateTime = new Date();
-            SimpleDateFormat formatFull = new SimpleDateFormat("dd.MM.YYYY HH:mm:ss");
-            dateTime = formatFull.parse(date + " " + time);
+            SimpleDateFormat formatFull =  new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+            dateTime = formatFull.parse(date.toString() + " " + time.toString());
 
         } catch (ParseException e) {
             e.printStackTrace();
