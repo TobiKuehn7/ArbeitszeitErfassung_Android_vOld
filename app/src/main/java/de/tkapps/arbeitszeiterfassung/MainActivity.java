@@ -9,13 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import de.tkapps.arbeitszeiterfassung.helpers.entryHelpers;
+import de.tkapps.arbeitszeiterfassung.helpers.EntryHelpers;
 import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
 import de.tkapps.arbeitszeiterfassung.models.Entry;
 
@@ -37,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
         // initialize UI
         initUIElements();
 
-        // TODO: chek if there is a not finished entry for today
+        // TODO: check if there is a not finished entry for today
+        EntryHelpers entryHelpers = new EntryHelpers(MainActivity.this);
         if (entryHelpers.startedEntryOfTodayExists()) {
-            entry = entryHelpers.loadStartedEntry();
+            entry = entryHelpers.loadLastEntry();
         }
 
 
@@ -60,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         txt_datum_arbeitszeit.setText(getText(R.string.datum) + date);
 
         // TODO: extract entry data and show it to user
+        if (entry != null) {
+            txt_beginn_arbeitszeit.setText(entry.getTimeBegin());
+            txt_beginn_pause_1.setText(entry.getTimePause1Begin());
+            txt_ende_pause_1.setText(entry.getTimePause1End());
+            txt_beginn_pause_2.setText(entry.getTimePause2Begin());
+            txt_ende_pause_2.setText(entry.getTimePause2End());
+            txt_ende_arbeitszeit.setText(entry.getTimeEnd());
+            txt_arbeitszeit_brutto.setText(entry.getTimeWorkingBrutto());
+            txt_pausenzeit.setText(entry.getTimePause());
+            txt_arbeitszeit_netto.setText(entry.getTimeWorkingNetto());
+        }
 
     }
 
