@@ -29,12 +29,21 @@ public class timeHelpers {
 
     public static Date makeDateTime(String date, String time) {
 
+        String strDate = null;
+        String strTime = null;
+
         Date dateTime = null;
+
+        char[] dateC = date.toCharArray();
+        char[] timeC = time.toCharArray();
+
+        strDate = new String(dateC);
+        strTime = new String(timeC);
 
         try {
 
             SimpleDateFormat formatFull =  new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-            dateTime = formatFull.parse(date.toString() + " " + time.toString());
+            dateTime = formatFull.parse(strDate + " " + strTime);
 
         } catch (ParseException e) {
             e.printStackTrace();

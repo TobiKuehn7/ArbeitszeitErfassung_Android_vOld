@@ -101,9 +101,12 @@ public class EntryHelpers {
             Entry lastEntry = entries.get(entries.size() - 1);
 
             // get date of last entry (and format it)
-            String dateLastEntry = lastEntry.getDateBegin();
-            String timeLastEntry = lastEntry.getTimeBegin();
-            Date date = timeHelpers.makeDateTime(dateLastEntry, timeLastEntry);
+            char[] dateLastEntryCharArray = lastEntry.getDateBegin().toCharArray();
+            char[] timeLastEntryCharArray = lastEntry.getTimeBegin().toCharArray();
+            String dateLastEntry = new String(dateLastEntryCharArray);
+            String timeLastEntry = new String(timeLastEntryCharArray);
+
+            Date date = timeHelpers.makeDateTime((String)dateLastEntry, (String)timeLastEntry);
 
             // get actual date
             Date now = new Date(System.currentTimeMillis());
