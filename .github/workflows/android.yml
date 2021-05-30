@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ reorganizeFolders ]
+    branches: [ main ]
   pull_request:
-    branches: [ reorganizeFolders ]
+    branches: [ main ]
 
 jobs:
   test:
