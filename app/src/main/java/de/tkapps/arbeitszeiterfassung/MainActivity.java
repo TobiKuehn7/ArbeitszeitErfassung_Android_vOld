@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.TimeZone;
 import de.tkapps.arbeitszeiterfassung.helpers.EntryHelpers;
 import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
 import de.tkapps.arbeitszeiterfassung.models.Entry;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         // change start/end button
         btn_start.setVisibility(View.VISIBLE);
         pauseEndBtnView.setVisibility(View.GONE);
-
-
 
     }
 
