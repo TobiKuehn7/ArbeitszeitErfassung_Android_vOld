@@ -30,15 +30,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_datum_arbeitszeit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Datum: " />
-
-                <TextView
                     android:id="@+id/txt_beginn_arbeitszeit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,46 +37,6 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:text="Beginn: " />
-
-                <TextView
-                    android:id="@+id/txt_beginn_pause_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:text="1. Pause Beginn: " />
-
-                <TextView
-                    android:id="@+id/txt_ende_pause_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:text="1. Pause Ende: " />
-
-                <TextView
-                    android:id="@+id/txt_beginn_pause_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:text="2. Pause Beginn: " />
-
-                <TextView
-                    android:id="@+id/txt_ende_pause_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:text="2. Pause Ende: " />
 
                 <TextView
                     android:id="@+id/txt_ende_arbeitszeit"
@@ -144,45 +95,8 @@
         android:onClick="startTimeTracking"
         android:text="START" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pauseEndBtnView"
-        android:visibility="gone"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_pause"
-            android:background="@drawable/button_rounded_left"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:textColor="#FFF"
-            android:layout_weight="50"
-            android:elevation="5dp"
-            android:onClick="pauseUnpauseTimeTracking"
-            android:text="PAUSE" />
-
-        <Button
-            android:id="@+id/btn_end"
-            android:background="@drawable/button_rounded_right"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:textColor="#FFF"
-            android:layout_weight="50"
-            android:elevation="5dp"
-            android:onClick="endTimeTracking"
-            android:text="ENDE" />
-
-    </LinearLayout>
-
     <Button
-        android:id="@+id/btn_end_full"
+        android:id="@+id/btn_end"
         android:background="@drawable/button_rounded_red"
         android:layout_width="match_parent"
         android:layout_height="50dp"
