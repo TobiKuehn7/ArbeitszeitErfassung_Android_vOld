@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
-import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
+import de.tkapps.arbeitszeiterfassung.helpers.TimeHelpers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         // get time of work beginnig
         Date dateTime = new Date();
-        String dateTimeStart = timeHelpers.dateToShowString(dateTime);
+        String dateTimeStart = TimeHelpers.dateToShowString(dateTime);
         txt_beginn_arbeitszeit.setText(getText(R.string.beginnArbeitszeit) + dateTimeStart);
 
         // save time to file and db if possible
@@ -105,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
 
         // get time of work ending
         Date dateEnd = new Date();
-        String dateTimeEnd = timeHelpers.dateToShowString(dateEnd);
+        String dateTimeEnd = TimeHelpers.dateToShowString(dateEnd);
         txt_ende_arbeitszeit.setText(getText(R.string.endeArbeitszeit) + dateTimeEnd);
 
         // get start time
         String timeStart = (String) txt_beginn_arbeitszeit.getText();
-        Date dateStart = timeHelpers.showStringToDate(timeStart);
+        Date dateStart = TimeHelpers.showStringToDate(timeStart);
 
         // calc difference in time between work beginning and end (brutto time)
-        Date dateDifference = timeHelpers.calcTimeDiff(dateStart, dateEnd);
+        Date dateDifference = TimeHelpers.calcTimeDiff(dateStart, dateEnd);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         formatter.setTimeZone(TimeZone.getTimeZone("MEZ"));
         txt_arbeitszeit_brutto.setText("Arbeitszeit (brutto): " + formatter.format(dateDifference));

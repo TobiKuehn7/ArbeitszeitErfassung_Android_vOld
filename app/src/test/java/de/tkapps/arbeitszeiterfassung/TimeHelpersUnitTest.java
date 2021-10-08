@@ -2,7 +2,7 @@ package de.tkapps.arbeitszeiterfassung;
 
 import org.junit.Test;
 import java.util.Date;
-import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
+import de.tkapps.arbeitszeiterfassung.helpers.TimeHelpers;
 import static org.junit.Assert.assertEquals;
 
 
@@ -16,7 +16,7 @@ public class TimeHelpersUnitTest {
 
         // actual date
         String timeString = "2021-10-08T11:19:57";
-        Date actualDate = timeHelpers.saveStringToDate(timeString);
+        Date actualDate = TimeHelpers.saveStringToDate(timeString);
 
         assertEquals(expectedDate, actualDate);
     }
@@ -29,7 +29,7 @@ public class TimeHelpersUnitTest {
 
         // actual date
         String timeString = "*: 08.10.2021, 11:19:57";
-        Date actualDate = timeHelpers.showStringToDate(timeString);
+        Date actualDate = TimeHelpers.showStringToDate(timeString);
 
         assertEquals(expectedDate, actualDate);
     }
@@ -42,7 +42,7 @@ public class TimeHelpersUnitTest {
         // actual string
         long time = 1633684797000L;
         Date actualDate = new Date(time);
-        String actualString = timeHelpers.dateToSaveString(actualDate);
+        String actualString = TimeHelpers.dateToSaveString(actualDate);
 
         assertEquals(expectedString, actualString);
     }
@@ -55,7 +55,7 @@ public class TimeHelpersUnitTest {
         // actual string
         long time = 1633684797000L;
         Date actualDate = new Date(time);
-        String actualString = timeHelpers.dateToShowString(actualDate);
+        String actualString = TimeHelpers.dateToShowString(actualDate);
 
         assertEquals(expectedString, actualString);
     }
@@ -70,7 +70,7 @@ public class TimeHelpersUnitTest {
         Date actualDateStart = new Date(timeStart);
         long timeEnd = 1633686597000L;
         Date actualDateEnd = new Date(timeEnd);
-        Date actualDateDifference = timeHelpers.calcTimeDiff(actualDateStart, actualDateEnd);
+        Date actualDateDifference = TimeHelpers.calcTimeDiff(actualDateStart, actualDateEnd);
 
 
         assertEquals(expectedDateDifference, actualDateDifference);

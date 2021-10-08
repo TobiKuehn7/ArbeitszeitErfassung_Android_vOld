@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class timeHelpers {
+public class TimeHelpers {
 
     /**
      * this function converts a string which contains a datetime to a date which contains a datetime
