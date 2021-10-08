@@ -1,5 +1,6 @@
 package de.tkapps.arbeitszeiterfassung.helpers;
 
+import android.annotation.SuppressLint;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,7 @@ public class timeHelpers {
      * @return the string which can be saved
      */
     public static String dateToSaveString(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         return dateFormat.format(date);
     }
 
@@ -53,7 +54,7 @@ public class timeHelpers {
      * @return the string which can be shown in app
      */
     public static String dateToShowString(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy', 'HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy', 'HH:mm:ss");
         return dateFormat.format(date);
     }
 
@@ -65,7 +66,6 @@ public class timeHelpers {
      */
     public static Date calcTimeDiff(Date dateStart, Date dateEnd) {
         long timeDifference = dateEnd.getTime() - dateStart.getTime();
-
         return new Date(timeDifference);
     }
 }

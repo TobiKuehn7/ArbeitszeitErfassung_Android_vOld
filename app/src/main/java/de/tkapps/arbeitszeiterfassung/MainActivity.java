@@ -2,17 +2,14 @@ package de.tkapps.arbeitszeiterfassung;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Date;
 import java.util.TimeZone;
-
 import de.tkapps.arbeitszeiterfassung.helpers.timeHelpers;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,8 +78,9 @@ public class MainActivity extends AppCompatActivity {
      * ending the time tracking.
      * This method should show the starting point of time tracking in the view and also save it to
      * a .csv file or a .xml file. TODO: Save time data as .csv or .xml file
-     * @param view
+     * @param view parse view into function
      */
+    @SuppressLint("SetTextI18n")
     public void startTimeTracking(View view) {
         // set UI elements
         resetUIAfterBtn(0);
@@ -98,8 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method controls what happens, if the end button is pressed
-     * @param view
+     * @param view parse view into function
      */
+    @SuppressLint("SetTextI18n")
     public void endTimeTracking(View view) {
         // set UI elements
         resetUIAfterBtn(1);
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         // calc difference in time between work beginning and end (brutto time)
         Date dateDifference = timeHelpers.calcTimeDiff(dateStart, dateEnd);
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         formatter.setTimeZone(TimeZone.getTimeZone("MEZ"));
         txt_arbeitszeit_brutto.setText("Arbeitszeit (brutto): " + formatter.format(dateDifference));
 
