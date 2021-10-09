@@ -1,13 +1,10 @@
 package de.tkapps.arbeitszeiterfassung.helpers;
 
 import android.annotation.SuppressLint;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class TimeHelpers {

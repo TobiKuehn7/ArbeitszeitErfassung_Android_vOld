@@ -1,15 +1,12 @@
 package de.tkapps.arbeitszeiterfassung;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -23,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_start, btn_end, btn_liste;
     TextView txt_beginn_arbeitszeit, txt_ende_arbeitszeit, txt_arbeitszeit_brutto, txt_pausenzeit, txt_arbeitszeit_netto;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
      * After clicking the button to start, it splits into two buttons. One for pausing and one for
      * ending the time tracking.
      * This method should show the starting point of time tracking in the view and also save it to
-     * a .csv file or a .xml file. TODO: Save time data as .csv or .xml file
+     * a .csv file or a .xml file.
      * @param view parse view into function
      */
     @SuppressLint("SetTextI18n")

@@ -2,7 +2,6 @@ package de.tkapps.arbeitszeiterfassung.helpers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,8 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import de.tkapps.arbeitszeiterfassung.MainActivity;
 import de.tkapps.arbeitszeiterfassung.models.Workday;
 
 
@@ -37,7 +34,7 @@ public class SavingHelpers {
         String filepath = filePathParts[0];
 
         File myExternalFile = new File(ctx.getExternalFilesDir(filepath), filename);
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         try {
             fos = new FileOutputStream(myExternalFile, true);
             fos.write(strStartTime.getBytes());
@@ -66,7 +63,7 @@ public class SavingHelpers {
         String filepath = filePathParts[0];
 
         File myExternalFile = new File(ctx.getExternalFilesDir(filepath), filename);
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         try {
             fos = new FileOutputStream(myExternalFile, true);
             fos.write(strStartTime.getBytes());
@@ -123,7 +120,7 @@ public class SavingHelpers {
         // init return variable
         String fileContents;
 
-        FileReader fr = null;
+        FileReader fr;
         File myExternalFile = new File(ctx.getExternalFilesDir(filepath), filename);
         StringBuilder stringBuilder = new StringBuilder();
         try {
@@ -165,7 +162,7 @@ public class SavingHelpers {
                 }
             } else {
                 // file just contains one workday
-                Workday workday = new Workday();
+                Workday workday;
                 String[] values = fileContents.split(",");
 
                 // workday is just started and not finished
