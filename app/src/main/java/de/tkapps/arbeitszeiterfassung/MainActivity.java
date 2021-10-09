@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import de.tkapps.arbeitszeiterfassung.helpers.TimeHelpers;
+import de.tkapps.arbeitszeiterfassung.helpers.SavingHelpers;
+import de.tkapps.arbeitszeiterfassung.models.Workday;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         // change start/end button
         btn_start.setVisibility(View.VISIBLE);
 
+        if (SavingHelpers.fileHasStartedWorkday(MainActivity.this)) {
+            resetUIAfterBtn(0);
+            Workday startedWorkday = SavingHelpers.getStartedWorkday(MainActivity.this);
+            Date startDateTime = TimeHelpers.saveStringToDate(startedWorkday.getDateTimeStart());
+            String startTime = TimeHelpers.dateToShowString(startDateTime);
+            txt_beginn_arbeitszeit.setText("Beginn: " + startTime);
+        }
     }
 
     /**
@@ -91,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
         txt_beginn_arbeitszeit.setText(getText(R.string.beginnArbeitszeit) + dateTimeStart);
 
         // save time to file and db if possible
-        //save();
+        SavingHelpers.saveStartTime(this, TimeHelpers.dateToSaveString(dateTime));
+        Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -117,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         formatter.setTimeZone(TimeZone.getTimeZone("MEZ"));
         txt_arbeitszeit_brutto.setText("Arbeitszeit (brutto): " + formatter.format(dateDifference));
+        String workTimeBrutto = formatter.format(dateDifference);
+        String workTimeNetto;
+        String pauseTime;
 
         // if date diff is bigger than 6 hours, substract 30 mins. If it is bigger than 9 hours substract 45 mins
         int halfHour = 1800000;
@@ -127,18 +143,39 @@ public class MainActivity extends AppCompatActivity {
             // substract 45 mins
             Date date = new Date(dateDifference.getTime() - quaterHour);
             txt_arbeitszeit_netto.setText("Arbeitszeit (netto): " + formatter.format(date));
+            workTimeNetto = formatter.format(date);
+            date = new Date(quaterHour);
+            txt_pausenzeit.setText("Pausenzeit: " + formatter.format(date));
+            pauseTime = formatter.format(date);
+            txt_pausenzeit.setVisibility(View.VISIBLE);
         } else if (dateDifference.getTime() >= sixHours) {
             // substract 30 mins
             Date date = new Date(dateDifference.getTime() - halfHour);
             txt_arbeitszeit_netto.setText("Arbeitszeit (netto): " + formatter.format(date));
+            workTimeNetto = formatter.format(date);
+            date = new Date(halfHour);
+            txt_pausenzeit.setText("Pausenzeit: " + formatter.format(date));
+            pauseTime = formatter.format(date);
+            txt_pausenzeit.setVisibility(View.VISIBLE);
         } else {
             // dont need to substract anything
             Date date = new Date(dateDifference.getTime());
             txt_arbeitszeit_netto.setText("Arbeitszeit (netto): " + formatter.format(date));
+            workTimeNetto = formatter.format(date);
+            date = new Date(0);
+            pauseTime = formatter.format(date);
         }
 
+        // get start time
+        String startTime = (String) txt_beginn_arbeitszeit.getText();
+        startTime = startTime.split(": ")[1];
+        Date dateTimeStart = TimeHelpers.showStringToDate(startTime);
+
         // save time to file and db if possible
-        //save();
+        SavingHelpers.saveEndTime(MainActivity.this,TimeHelpers.dateToSaveString(dateTimeStart), TimeHelpers.dateToSaveString(dateEnd), workTimeBrutto, workTimeNetto, pauseTime);
+        Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_LONG).show();
+
+        resetUIAfterBtn(1);
     }
 
 }
