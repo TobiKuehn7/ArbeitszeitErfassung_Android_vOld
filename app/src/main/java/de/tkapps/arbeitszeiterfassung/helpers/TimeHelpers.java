@@ -6,6 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class TimeHelpers {
@@ -16,6 +18,14 @@ public class TimeHelpers {
      * @return a Date which contains the given datetime from the string
      */
     public static Date saveStringToDate(String str) {
+        char[] strings = str.toCharArray();
+        if (strings[0] != '2') {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < strings.length; i++) {
+                sb.append(strings[i]);
+            }
+            str = sb.toString();
+        }
         LocalDateTime dateTime = LocalDateTime.parse(str);
         return java.util.Date
                 .from(dateTime.atZone(ZoneId.systemDefault())
@@ -28,7 +38,13 @@ public class TimeHelpers {
      * @return a Date which contains the given datetime from the string
      */
     public static Date showStringToDate(String str) {
-        String[] dateTimeParts = str.split(": ")[1].split(", ");
+        String[] dateTimeParts;
+
+        if (str.contains(": ")) {
+            dateTimeParts = str.split(": ")[1].split(", ");
+        } else {
+            dateTimeParts = str.split(", ");
+        }
 
         String[] dateParts = dateTimeParts[0].split("\\.");
         String date = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
