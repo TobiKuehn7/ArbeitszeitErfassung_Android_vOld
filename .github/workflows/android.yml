@@ -23,7 +23,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Test with Gradle
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace
       - name: Upload a Test Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
@@ -48,7 +48,7 @@ jobs:
         - name: Grant execute permission for gradlew
           run: chmod +x gradlew
         - name: Build with Gradle
-          run: ./gradlew build
+          run: ./gradlew build --stacktrace
         - name: Upload a Build Artifact
           uses: actions/upload-artifact@v2.2.3
           with:
