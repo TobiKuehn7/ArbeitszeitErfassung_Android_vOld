@@ -12,4 +12,13 @@
     <string name="weiter">WEITER</string>
     <string name="pause">PAUSE</string>
     <string name="datum">Datum:\u0020</string>
+    <string name="arbeitszeiterfassung">Arbeitszeiterfassung</string>
+    <string name="beginn">Beginn:</string>
+    <string name="ende">Ende:</string>
+    <string name="arbeitszeit_brutto">Arbeitszeit (brutto):</string>
+    <string name="pausenzeit_activity_xml">Pausenzeit:</string>
+    <string name="arbeitszeit_netto">Arbeitszeit (netto):</string>
+    <string name="start">START</string>
+    <string name="ende_activity_xml">ENDE</string>
+    <string name="liste">LISTE</string>
 </resources>
