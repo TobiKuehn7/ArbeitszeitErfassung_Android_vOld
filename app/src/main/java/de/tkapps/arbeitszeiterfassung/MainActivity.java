@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -31,12 +35,23 @@ public class MainActivity extends AppCompatActivity {
         // change start/end button
         btn_start.setVisibility(View.VISIBLE);
 
-        if (SavingHelpers.fileHasStartedWorkday(MainActivity.this)) {
-            resetUIAfterBtn(0);
-            Workday startedWorkday = SavingHelpers.getStartedWorkday(MainActivity.this);
-            Date startDateTime = TimeHelpers.saveStringToDate(startedWorkday.getDateTimeStart());
-            String startTime = TimeHelpers.dateToShowString(startDateTime);
-            txt_beginn_arbeitszeit.setText("Beginn: " + startTime);
+        String[] fileParts = SavingHelpers.getFilePath();
+        File file = new File(this.getExternalFilesDir(fileParts[0]), fileParts[1] + ".csv");
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            if (SavingHelpers.fileHasStartedWorkday(MainActivity.this)) {
+                resetUIAfterBtn(0);
+                Workday startedWorkday = SavingHelpers.getStartedWorkday(MainActivity.this);
+                Date startDateTime = TimeHelpers.saveStringToDate(startedWorkday.getDateTimeStart());
+                String startTime = TimeHelpers.dateToShowString(startDateTime);
+                txt_beginn_arbeitszeit.setText("Beginn: " + startTime);
+            }
         }
     }
 
