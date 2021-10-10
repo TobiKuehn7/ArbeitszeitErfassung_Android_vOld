@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ notNow ]
+    branches: [ main ]
   pull_request:
-    branches: [ notNow ]
+    branches: [ main ]
 
 jobs:
   test:
@@ -32,7 +32,7 @@ jobs:
 
   build:
 
-      needs: [test]
+      # needs: [test]
 
       runs-on: ubuntu-latest
 
