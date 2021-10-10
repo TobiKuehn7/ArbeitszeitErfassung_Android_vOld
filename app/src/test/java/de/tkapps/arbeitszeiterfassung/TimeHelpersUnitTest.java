@@ -1,9 +1,9 @@
 package de.tkapps.arbeitszeiterfassung;
 
-import org.junit.Test;
 import java.util.Date;
 import de.tkapps.arbeitszeiterfassung.helpers.TimeHelpers;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TimeHelpersUnitTest {
