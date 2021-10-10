@@ -93,7 +93,7 @@ public class SavingHelpers {
      * this function returns both parts of a file path (filedirectory, filename+extension)
      * @return an array with the dir on 0 and file name on 1
      */
-    private static String[] getFilePath() {
+    public static String[] getFilePath() {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date(System.currentTimeMillis());
         String strDate = formatter.format(date);
