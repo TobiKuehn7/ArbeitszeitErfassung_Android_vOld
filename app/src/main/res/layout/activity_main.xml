@@ -118,6 +118,7 @@
         android:textColor="#FFF"
         android:elevation="5dp"
         android:visibility="visible"
+        android:onClick="openList"
         android:text="LISTE" />
 
 </LinearLayout>

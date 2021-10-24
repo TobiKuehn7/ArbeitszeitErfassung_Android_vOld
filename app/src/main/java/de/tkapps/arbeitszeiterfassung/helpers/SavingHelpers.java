@@ -139,7 +139,7 @@ public class SavingHelpers {
         return fileContents;
     }
 
-    private static List<Workday> getAllWorkdays(Context ctx) {
+    public static List<Workday> getAllWorkdays(Context ctx) {
         List<Workday> workdays = new ArrayList<>();
         String fileContents = getFileContent(ctx);
 
