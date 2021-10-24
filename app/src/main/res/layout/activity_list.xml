@@ -15,9 +15,20 @@
         android:textStyle="bold"
         android:text="Arbeitszeiterfassung" />
 
+    <Button
+        android:id="@+id/addWorkday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_rounded_blue"
+        android:textColor="#FFF"
+        android:layout_margin="10dp"
+        android:onClick="addWorkday"
+        android:text="Nachtragen" />
+
     <ListView
         android:id="@+id/workdayList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="#FFF" />
 
 </LinearLayout>
